@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class playerWall : MonoBehaviour
 {
     public GameObject playerRed;
@@ -47,8 +48,17 @@ public class playerWall : MonoBehaviour
         {
             position.z = (playerRedPos.z - playerBluePos.z)/2 + playerBluePos.z;
         }
+
         scale.x = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(playerBluePos.x - playerRedPos.x), 2) + Mathf.Pow(Mathf.Abs(playerBluePos.z - playerRedPos.z), 2));
+        rotation = Quaternion.LookRotation(playerRedPos - playerBluePos, Vector3.up); // relative position, dir 
+
+        // Modify 90º the rotation in the y axis
+        Vector3 v = rotation.eulerAngles; 
+        rotation = Quaternion.Euler(v.x, v.y - 90, v.z);
+       
         transform.SetPositionAndRotation(position, rotation);
         transform.localScale = scale;
+
+        
     }
 }

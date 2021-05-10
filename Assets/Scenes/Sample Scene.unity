@@ -326,6 +326,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 746186707522591667, guid: cd1cb5635f8dbe649adff6525a31cfd3,
+        type: 3}
+      propertyPath: InvertY
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4160097904938921555, guid: cd1cb5635f8dbe649adff6525a31cfd3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -543,7 +548,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!114 &471665484
 MonoBehaviour:
@@ -581,7 +586,7 @@ MeshRenderer:
   m_GameObject: {fileID: 471665483}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
