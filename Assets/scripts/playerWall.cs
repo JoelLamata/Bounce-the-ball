@@ -5,12 +5,19 @@ using UnityEngine;
 
 public class playerWall : MonoBehaviour
 {
+    // Players
     public GameObject playerRed;
     public GameObject playerBlue;
+    private Vector3 playerRedPos;
+    private Vector3 playerBluePos;
 
+    // definim la posició, rotació i escala
     private Vector3 position;
     private Quaternion rotation;
-    private Vector3 scale;
+    private Vector3 scale;   
+
+    public float distanceControl;  // Distància mínima per crear la malla
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,17 +27,30 @@ public class playerWall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cambiarPosicion();
+        // Calculem la distància entre els dos jugadors
+        playerRedPos = playerRed.transform.position;
+        playerBluePos = playerBlue.transform.position;
+
+        scale.x = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(playerBluePos.x - playerRedPos.x), 2) + Mathf.Pow(Mathf.Abs(playerBluePos.z - playerRedPos.z), 2));
+
+        // Si la distància és menor que distanceControl, creem la malla
+        if (scale.x < distanceControl)
+        {
+            cambiarPosicion();
+        }
+        else
+        {
+            scale.Set(0, 0, 0);
+            transform.localScale = scale;
+        }
     }
 
     void cambiarPosicion()
     {
-        rotation.Set(0, 0, 0, 0);
-        scale.Set(3, 2, 2);
-        Vector3 playerRedPos;
-        Vector3 playerBluePos;
-        playerRedPos = playerRed.transform.position;
-        playerBluePos = playerBlue.transform.position;
+        // Definim la escala
+        scale.Set(scale.x, 2, 2);
+
+        // Calculem la posició de la malla
         if (playerRedPos.x < playerBluePos.x)
         {
             position.x = (playerBluePos.x - playerRedPos.x)/2 + playerRedPos.x;
@@ -49,13 +69,14 @@ public class playerWall : MonoBehaviour
             position.z = (playerRedPos.z - playerBluePos.z)/2 + playerBluePos.z;
         }
 
-        scale.x = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(playerBluePos.x - playerRedPos.x), 2) + Mathf.Pow(Mathf.Abs(playerBluePos.z - playerRedPos.z), 2));
+        // Calculem la rotació de la malla
         rotation = Quaternion.LookRotation(playerRedPos - playerBluePos, Vector3.up); // relative position, dir 
 
-        // Modify 90º the rotation in the y axis
+        // Rectifiquem 90º la rotació de la malla en l'eix y 
         Vector3 v = rotation.eulerAngles; 
         rotation = Quaternion.Euler(v.x, v.y - 90, v.z);
-       
+
+
         transform.SetPositionAndRotation(position, rotation);
         transform.localScale = scale;
 
