@@ -895,11 +895,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: -2707268459014408561, guid: 4d9ff2ca5a693374fb72e4147ce51372,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f9802539ebeab8049ad25ec27d72fcc0, type: 2}
+    - target: {fileID: -1881404372294814299, guid: 4d9ff2ca5a693374fb72e4147ce51372,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f9802539ebeab8049ad25ec27d72fcc0, type: 2}
     - target: {fileID: 919132149155446097, guid: 4d9ff2ca5a693374fb72e4147ce51372,
         type: 3}
       propertyPath: m_Name
       value: basketball_hoop
       objectReference: {fileID: 0}
+    - target: {fileID: 8637203341698643201, guid: 4d9ff2ca5a693374fb72e4147ce51372,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f9802539ebeab8049ad25ec27d72fcc0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d9ff2ca5a693374fb72e4147ce51372, type: 3}
 --- !u!1 &1489202375
@@ -1250,6 +1265,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -5977553392999746919, guid: 183c5afbba7f68a4d840915dcb455a1b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c37b07cee709cb3428b8096cbf6476f8, type: 2}
+    - target: {fileID: -4942322183940521537, guid: 183c5afbba7f68a4d840915dcb455a1b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5418b3311fa0c074b90841823205ce76, type: 2}
     - target: {fileID: 919132149155446097, guid: 183c5afbba7f68a4d840915dcb455a1b,
         type: 3}
       propertyPath: m_Name
