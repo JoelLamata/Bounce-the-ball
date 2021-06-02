@@ -22,6 +22,8 @@ public class MoveCanasta : MonoBehaviour
     {
         if (other.CompareTag(tagFilter))
         {
+            SoundManager.Instance.PlayBasketClip();
+            GameStateManager.Instance.ScoreBall();
             Respawn();
         }
     }

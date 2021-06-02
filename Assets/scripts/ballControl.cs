@@ -33,7 +33,8 @@ public class ballControl : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        
+        SoundManager.Instance.PlayBounceClip();
+
         Bounce(other.contacts[0].normal);
         
     }
