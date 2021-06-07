@@ -33,9 +33,9 @@ public class MoveCanasta : MonoBehaviour
         float posX = Random.Range(5.0f, 95.0f);
         float posZ = Random.Range(5.0f, 95.0f);
         Vector3 position = new Vector3(posX, -15.2f, posZ);
-        float rotate = Random.Range(0, 360);
         transform.position = position;
-        transform.Rotate(0, rotate, 0);
+        Vector3 center = new Vector3(Random.Range(45, 55), -15.2f, Random.Range(45, 55));
+        transform.LookAt(center);
     }
 
 }
