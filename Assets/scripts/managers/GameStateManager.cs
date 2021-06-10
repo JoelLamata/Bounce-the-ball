@@ -8,6 +8,7 @@ public class GameStateManager : MonoBehaviour
     public static GameStateManager Instance;
 
     public int ballScored;
+    public GameObject canasta;
 
     //public hoopSpawner hoopSpawner;
 
@@ -20,13 +21,14 @@ public class GameStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void ScoreBall()
     {
         ballScored++;
         UIManager.Instance.UpdateBallScored();
+        if (ballScored == 1) { canasta.GetComponent<MoveCanasta>().SetLevel(5); }
     }
 
     public void Restart()
