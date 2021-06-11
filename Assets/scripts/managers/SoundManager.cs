@@ -5,9 +5,11 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
+    AudioSource musicSource;
 
     public AudioClip bounceClip;
     public AudioClip basketClip;
+    public AudioClip celebration;
 
     private Vector3 cameraPosition;
 
@@ -16,6 +18,8 @@ public class SoundManager : MonoBehaviour
     {
         Instance = this;
         cameraPosition = Camera.main.transform.position;
+        musicSource = GetComponent<AudioSource>();
+        musicSource.Play();
     }
 
     // Update is called once per frame
@@ -24,9 +28,9 @@ public class SoundManager : MonoBehaviour
         
     }
 
-    private void PlaySound(AudioClip clip) // 1
+    private void PlaySound(AudioClip clip)
     {
-        AudioSource.PlayClipAtPoint(clip, cameraPosition); // 2
+        AudioSource.PlayClipAtPoint(clip, cameraPosition);
     }
 
     public void PlayBounceClip()
@@ -37,6 +41,7 @@ public class SoundManager : MonoBehaviour
     public void PlayBasketClip()
     {
         PlaySound(basketClip);
+        PlaySound(celebration);
     }
 
 }
