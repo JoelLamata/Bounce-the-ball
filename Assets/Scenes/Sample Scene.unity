@@ -169,6 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballScored: 0
+  canasta: {fileID: 919132148336761323}
+  obstacle: {fileID: 0}
 --- !u!1 &88977548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1772,6 +1774,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagFilter: NBABall
+  runSpeed: 10
+  level: 1
+  creationPos: {x: 0, y: 0, z: 0}
 --- !u!135 &919132148336761325
 SphereCollider:
   m_ObjectHideFlags: 0

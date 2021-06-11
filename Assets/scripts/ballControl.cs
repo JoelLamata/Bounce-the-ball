@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,9 @@ public class ballControl : MonoBehaviour
     private Rigidbody rb;            // Ball RigidBody             
     public float minVelocity = 10f;
     private Vector3 lastFrameVelocity;
-
+    public int level;
+    private float speed; 
+ 
     // Start is called before the first frame update - cambiar por OnEnable()
     void Start()
     {
@@ -19,12 +21,19 @@ public class ballControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // updating the vel
-        lastFrameVelocity = rb.velocity; 
+        lastFrameVelocity = rb.velocity;
+        speed = lastFrameVelocity.magnitude;
+
+        // updating the vel. If the player is in the lev 10 increase the vel per frame
+        if(level >= 10)
+        {
+            speed = speed + 2; 
+        }
+	
     }
     private void Bounce(Vector3 collisionNormal)
     {
-        var speed = lastFrameVelocity.magnitude;
+        
         var direction = Vector3.Reflect(lastFrameVelocity.normalized, collisionNormal);
 
         // Debug.Log("Out Direction: " + direction);
@@ -36,6 +45,13 @@ public class ballControl : MonoBehaviour
         SoundManager.Instance.PlayBounceClip();
 
         Bounce(other.contacts[0].normal);
+	
         
     }
+
+    public void SetLevel(int newLevel)
+    {
+        level = newLevel;
+    }
+
 }
