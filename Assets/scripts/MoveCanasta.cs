@@ -36,16 +36,16 @@ public class MoveCanasta : MonoBehaviour
     
     void Respawn()
     {
-        float posX = Random.Range(5.0f, 95.0f);
-        float posZ = Random.Range(5.0f, 95.0f);
+        float posX = Random.Range(5.0f, 90.0f);
+        float posZ = Random.Range(5.0f, 90.0f);
         Vector3 ballPos = ball.transform.position;
         while(posX >= ballPos.x - 25 && posX <= ballPos.x + 25)
         {
-            posX = Random.Range(5.0f, 95.0f);
+            posX = Random.Range(10.0f, 90.0f);
         }
         while(posZ >= ballPos.z - 25 && posZ <= ballPos.z + 25)
         {
-            posZ = Random.Range(5.0f, 95.0f);
+            posZ = Random.Range(10.0f, 90.0f);
         }
         Vector3 position = new Vector3(posX, -15.2f, posZ);
         transform.position = position;
@@ -64,8 +64,9 @@ public class MoveCanasta : MonoBehaviour
 
         
         if((transform.position.x <= (creationPos.x - 10)) || (transform.position.x >= (10 + creationPos.x)) ||
-            (transform.position.z >= 99) || (transform.position.z <= 1) || 
-            (transform.position.x >= 99) || (transform.position.x <= 1))
+            (transform.position.z <= (creationPos.z - 10)) || (transform.position.z >= (10 + creationPos.z)) ||
+            (transform.position.z >= 95) || (transform.position.z <= 5) || 
+            (transform.position.x >= 95) || (transform.position.x <= 5))
         {
             right = !right;
         }

@@ -9,6 +9,9 @@ public class GameStateManager : MonoBehaviour
 
     public int ballScored;
     public GameObject canasta;
+    public GameObject obstacle;
+    public GameObject ball;
+    public GameObject particle;
 
     //public hoopSpawner hoopSpawner;
 
@@ -28,7 +31,14 @@ public class GameStateManager : MonoBehaviour
     {
         ballScored++;
         UIManager.Instance.UpdateBallScored();
-        if (ballScored == 1) { canasta.GetComponent<MoveCanasta>().SetLevel(5); }
+
+        Vector3 position = canasta.transform.position;
+        position.y = 0;
+        Instantiate(particle, position, Quaternion.identity);
+        
+        if (ballScored == 5) { canasta.GetComponent<MoveCanasta>().SetLevel(5); }
+        else if (ballScored % 10 == 0) { obstacle.GetComponent<Obstacle>().InstantiateObstacle(); }
+        else if (ballScored == 15) { ball.GetComponent<ballControl>().SetLevel(10); }
     }
 
     public void Restart()

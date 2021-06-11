@@ -6,12 +6,10 @@ public class ballControl : MonoBehaviour
 {
     public Vector3 initialVelocity; // Bounce velocity
     private Rigidbody rb;            // Ball RigidBody             
-    public float minVelocity = 10f;
+    public float minVelocity;
     private Vector3 lastFrameVelocity;
     public int level;
-    private float speed; 
  
-    // Start is called before the first frame update - cambiar por OnEnable()
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -22,20 +20,11 @@ public class ballControl : MonoBehaviour
     void Update()
     {
         lastFrameVelocity = rb.velocity;
-        speed = lastFrameVelocity.magnitude;
-
-        // updating the vel. If the player is in the lev 10 increase the vel per frame
-        if(level >= 10)
-        {
-            speed = speed + 2; 
-        }
-	
     }
     private void Bounce(Vector3 collisionNormal)
     {
-        
         var direction = Vector3.Reflect(lastFrameVelocity.normalized, collisionNormal);
-
+        var speed = lastFrameVelocity.magnitude;
         // Debug.Log("Out Direction: " + direction);
         rb.velocity = direction * Mathf.Max(speed, minVelocity);
     }
@@ -43,10 +32,15 @@ public class ballControl : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         SoundManager.Instance.PlayBounceClip();
-
+        // updating the vel. If the player is in the lev 10 increase the vel per frame
+        if (level >= 10)
+        {
+            if (minVelocity < 50)
+            {
+                minVelocity += 2;
+            }
+        }
         Bounce(other.contacts[0].normal);
-	
-        
     }
 
     public void SetLevel(int newLevel)
