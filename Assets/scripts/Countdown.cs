@@ -15,11 +15,10 @@ public class Countdown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.unscaledTime < 5)
+        if (Time.unscaledTime < InfoShared.initTime + 4)
         {
-            //int index = (int)(Time.time % 4);
             Time.timeScale = 0;
-            GetComponent<Image>().sprite = texture[(int)Time.unscaledTime - 1];
+            GetComponent<Image>().sprite = texture[(int)(Time.unscaledTime - InfoShared.initTime)];
         }
         else
         {

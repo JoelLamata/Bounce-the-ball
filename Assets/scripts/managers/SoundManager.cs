@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip bounceClip;
     public AudioClip basketClip;
     public AudioClip celebration;
+    public AudioClip airHorn;
 
     private Vector3 cameraPosition;
 
@@ -43,5 +44,8 @@ public class SoundManager : MonoBehaviour
         PlaySound(basketClip);
         PlaySound(celebration);
     }
-
+    public void PlayAirHornSound()
+    {
+        PlaySound(airHorn);
+    }
 }

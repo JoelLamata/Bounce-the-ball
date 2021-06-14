@@ -36,13 +36,22 @@ public class GameStateManager : MonoBehaviour
         position.y = 0;
         Instantiate(particle, position, Quaternion.identity);
         
-        if (ballScored == 5) { canasta.GetComponent<MoveCanasta>().SetLevel(5); }
-        else if (ballScored % 10 == 0) { obstacle.GetComponent<Obstacle>().InstantiateObstacle(); }
-        else if (ballScored == 15) { ball.GetComponent<ballControl>().SetLevel(10); }
+        if (ballScored == 2) { canasta.GetComponent<MoveCanasta>().SetLevel(5); }
+        else if (ballScored % 4 == 0) { obstacle.GetComponent<Obstacle>().InstantiateObstacle(); }
+        else if (ballScored == 6) { ball.GetComponent<ballControl>().SetLevel(10); }
     }
 
     public void Restart()
     {
         ballScored = 0;
+    }
+
+    public void end()
+    {
+        if(InfoShared.record < ballScored)
+        {
+            InfoShared.record = ballScored;
+        }
+        SceneManager.LoadScene("Start");
     }
 }
